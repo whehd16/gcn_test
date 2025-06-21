@@ -137,6 +137,8 @@ def preprocess_positional_chunks(chunks):
             # 특징 3: 청크 내 거리 정규화 (0~1)
             normalized_dist = (song_data['dis'] - min_dist) / dist_range
             chunk_features[chunk_idx, i, 2] = normalized_dist
+        print(chunks)
+        print(chunk_features)
         
         # 인접 행렬: 거리와 순위 유사도 기반
         for i in range(chunk_size):
@@ -186,6 +188,11 @@ print(f"\n학습 목표: 시계열 패턴으로 상위권 등장 가능성 예�
 
 # 전처리
 chunk_features, chunk_adjs, chunk_sizes = preprocess_positional_chunks(chunks)
+
+print("===========")
+print(chunk_adjs)
+
+exit(1)
 
 # 텐서 변환
 features_tensor = torch.FloatTensor(chunk_features)
